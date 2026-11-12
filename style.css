@@ -1,0 +1,439 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #292929;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 6%;
+  background: white;
+  box-shadow: 0 2px 12px #00000012;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  color: #222;
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.logo span {
+  color: #e93670;
+}
+
+.header-location {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-location button {
+  color: #e93670;
+  background: #fff0f5;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+nav button {
+  background: white;
+  padding: 11px 15px;
+  border-radius: 8px;
+}
+
+.primary-btn {
+  background: #e93670 !important;
+  color: white !important;
+  border-radius: 8px;
+  padding: 13px 20px;
+  transition: .2s;
+}
+
+.primary-btn:hover {
+  background: #c92159 !important;
+}
+
+.primary-btn:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+.hero {
+  min-height: 360px;
+  padding: 75px 7%;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(90deg, #fff0f5 45%, #fff0f5c9),
+    url("https://images.unsplash.com/photo-1504674900247-0877df9cc836")
+    center/cover;
+}
+
+.hero-content {
+  max-width: 650px;
+}
+
+.hero h1 {
+  font-size: clamp(32px, 5vw, 52px);
+  margin-bottom: 15px;
+}
+
+.hero p {
+  color: #555;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.hero-search {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  max-width: 620px;
+}
+
+.hero-search input {
+  flex: 1;
+}
+
+.food-section {
+  padding: 55px 6%;
+}
+
+.food-section h2 {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.section-description {
+  color: #777;
+  margin-bottom: 25px;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+}
+
+.food-card {
+  border-radius: 13px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  background: white;
+  box-shadow: 0 3px 15px #0000000b;
+  transition: transform .2s;
+}
+
+.food-card:hover {
+  transform: translateY(-5px);
+}
+
+.food-card img {
+  width: 100%;
+  height: 165px;
+  object-fit: cover;
+}
+
+.food-info {
+  padding: 15px;
+}
+
+.food-info h3 {
+  margin-bottom: 7px;
+}
+
+.food-info p {
+  color: #777;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.food-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.food-price {
+  font-weight: bold;
+  color: #e93670;
+}
+
+.add-btn {
+  background: #e93670;
+  color: white;
+  padding: 9px 13px;
+  border-radius: 7px;
+}
+
+footer {
+  text-align: center;
+  padding: 35px;
+  background: #28232a;
+  color: white;
+}
+
+footer p {
+  color: #ccc;
+  margin-top: 8px;
+}
+
+dialog {
+  border: none;
+  border-radius: 15px;
+  padding: 25px;
+  width: min(95%, 470px);
+  max-height: 90vh;
+  overflow-y: auto;
+  margin: auto;
+  box-shadow: 0 10px 50px #0003;
+}
+
+dialog::backdrop {
+  background: #0008;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.dialog-header h2 {
+  font-size: 21px;
+}
+
+.close-btn {
+  background: #f3f3f3;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 22px;
+}
+
+dialog label {
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+  margin: 16px 0 7px;
+}
+
+dialog > p {
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.full-btn {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.small-text, .muted {
+  font-size: 12px;
+  color: #777;
+  margin-top: 12px;
+}
+
+.message {
+  font-size: 14px;
+  margin-top: 12px;
+  color: #d12a5c;
+}
+
+#recaptcha-container {
+  margin-top: 15px;
+  overflow: hidden;
+}
+
+.autocomplete-wrap {
+  position: relative;
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+  background: white;
+  box-shadow: 0 5px 18px #0002;
+  border-radius: 8px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.suggestion-item {
+  padding: 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.suggestion-item:hover {
+  background: #fff0f5;
+}
+
+.cart-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.quantity-controls button {
+  background: #fff0f5;
+  color: #e93670;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.total-line {
+  border-top: 1px solid #ddd;
+  margin-top: 8px;
+  padding-top: 12px;
+  font-weight: bold;
+}
+
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #292929;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 8px;
+  display: none;
+  z-index: 50;
+}
+
+.notification.show {
+  display: block;
+}
+
+/* International phone input */
+.iti {
+  width: 100%;
+}
+
+.iti input {
+  width: 100%;
+}
+
+.iti__dropdown-content {
+  z-index: 100;
+}
+
+#cartItems {
+  margin-bottom: 15px;
+}
+
+#checkoutSummary {
+  margin-top: 15px;
+}
+
+@media (max-width: 750px) {
+  .header {
+    flex-wrap: wrap;
+  }
+
+  .header-location {
+    order: 3;
+    width: 100%;
+  }
+
+  .filters {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 55px 5%;
+  }
+
+  .hero-search {
+    flex-direction: column;
+  }
+
+  .food-section {
+    padding: 40px 5%;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 15px 4%;
+  }
+
+  .logo {
+    font-size: 21px;
+  }
+
+  nav {
+    gap: 3px;
+  }
+
+  nav button {
+    padding: 9px;
+    font-size: 12px;
+  }
+
+  .food-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodExpress | Food Delivery</title>
+
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/css/intlTelInput.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <a class="logo" href="#">Food<span>Express</span></a>
+
+    <div class="header-location">
+      <span>Deliver to:</span>
+      <button id="openLocation">Choose location</button>
+    </div>
+
+    <nav>
+      <button id="loginBtn">Login</button>
+      <button id="signupBtn" class="primary-btn">Sign up</button>
+      <button id="cartBtn">Cart (<span id="cartCount">0</span>)</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Delicious food, delivered to your door.</h1>
+        <p>Discover restaurants and food from around the world.</p>
+
+        <div class="hero-search">
+          <input id="heroAddress"
+            placeholder="Enter your city or delivery address">
+          <button id="heroSearchBtn" class="primary-btn">Find food</button>
+          <div id="heroSuggestions" class="suggestions"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="food-section">
+      <h2>Explore delicious food</h2>
+      <p class="section-description">
+        Choose from our selection of popular dishes.
+      </p>
+
+      <div class="filters">
+        <input id="foodSearch" placeholder="Search food or restaurant...">
+
+        <select id="categoryFilter">
+          <option value="All">All categories</option>
+          <option value="Pizza">Pizza</option>
+          <option value="Burgers">Burgers</option>
+          <option value="Chicken">Chicken</option>
+          <option value="Chinese">Chinese</option>
+          <option value="Desserts">Desserts</option>
+          <option value="Drinks">Drinks</option>
+        </select>
+
+        <select id="sortFilter">
+          <option value="default">Sort by</option>
+          <option value="low">Price: Low to High</option>
+          <option value="high">Price: High to Low</option>
+        </select>
+      </div>
+
+      <div id="foodGrid" class="food-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <h2>FoodExpress</h2>
+    <p>Good food. Great moments. Delivered worldwide.</p>
+  </footer>
+
+  <!-- LOCATION DIALOG -->
+  <dialog id="locationDialog">
+    <div class="dialog-header">
+      <h2>Choose your location</h2>
+      <button class="close-btn" data-close="locationDialog">×</button>
+    </div>
+
+    <label for="cityInput">Search city or town</label>
+    <div class="autocomplete-wrap">
+      <input id="cityInput"
+        placeholder="Search any city in the world">
+      <div id="citySuggestions" class="suggestions"></div>
+    </div>
+
+    <p id="selectedCityText" class="muted">No city selected.</p>
+
+    <label for="addressInput">Delivery address</label>
+    <div class="autocomplete-wrap">
+      <input id="addressInput"
+        placeholder="Street, building, area or address">
+      <div id="addressSuggestions" class="suggestions"></div>
+    </div>
+
+    <button id="saveLocation" class="primary-btn full-btn">
+      Save location
+    </button>
+  </dialog>
+
+  <!-- LOGIN / SIGNUP DIALOG -->
+  <dialog id="authDialog">
+    <div class="dialog-header">
+      <h2 id="authTitle">Login</h2>
+      <button class="close-btn" data-close="authDialog">×</button>
+    </div>
+
+    <p>Enter your phone number to continue.</p>
+
+    <div id="nameGroup" class="hidden">
+      <label for="authName">Full name</label>
+      <input id="authName" placeholder="Enter your full name">
+    </div>
+
+    <label for="authPhone">Phone number</label>
+    <input id="authPhone" type="tel" autocomplete="tel">
+
+    <div id="recaptcha-container"></div>
+
+    <button id="sendOtpBtn" class="primary-btn full-btn">
+      Send verification code
+    </button>
+
+    <div id="otpSection" class="hidden">
+      <label for="otpInput">Verification code</label>
+      <input id="otpInput" inputmode="numeric"
+        autocomplete="one-time-code"
+        placeholder="Enter the 6-digit code"
+        maxlength="6">
+
+      <button id="verifyOtpBtn" class="primary-btn full-btn">
+        Verify phone number
+      </button>
+    </div>
+
+    <p id="authMessage" class="message"></p>
+
+    <p class="small-text">
+      Your country code is selected automatically when possible.
+      You can change it using the country selector.
+    </p>
+  </dialog>
+
+  <!-- CART DIALOG -->
+  <dialog id="cartDialog">
+    <div class="dialog-header">
+      <h2>Your shopping cart</h2>
+      <button class="close-btn" data-close="cartDialog">×</button>
+    </div>
+
+    <div id="cartItems"></div>
+    <div id="cartSummary"></div>
+
+    <button id="checkoutBtn" class="primary-btn full-btn">
+      Continue to checkout
+    </button>
+  </dialog>
+
+  <!-- CHECKOUT DIALOG -->
+  <dialog id="checkoutDialog">
+    <div class="dialog-header">
+      <h2>Delivery details</h2>
+      <button class="close-btn" data-close="checkoutDialog">×</button>
+    </div>
+
+    <label for="customerName">Full name</label>
+    <input id="customerName" placeholder="Your name">
+
+    <label for="customerPhone">Contact phone number</label>
+    <input id="customerPhone" type="tel" autocomplete="tel">
+
+    <label for="customerAddress">Delivery address</label>
+    <textarea id="customerAddress"
+      placeholder="Enter your complete delivery address"></textarea>
+
+    <label for="paymentMethod">Payment method</label>
+    <select id="paymentMethod">
+      <option value="Cash on delivery">Cash on delivery</option>
+      <option value="Online payment">Online payment (demo only)</option>
+    </select>
+
+    <div id="checkoutSummary"></div>
+
+    <button id="placeOrderBtn" class="primary-btn full-btn">
+      Place order
+    </button>
+
+    <p id="orderMessage" class="message"></p>
+  </dialog>
+
+  <div id="notification" class="notification"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/intlTelInput.min.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
+
